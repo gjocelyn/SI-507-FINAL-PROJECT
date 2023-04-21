@@ -5,7 +5,7 @@
 This project is a restaurant search program that help people find the desired restaurant. In order to acheve this goal, it need to get access of the restaurant data from the website, then organizes that data into a tree. By asking users questions (about price, rate location, etc.) until it provides a set of recommendations that meet the user options.
 
 
-##PYTHON PACKAGE
+## PYTHON PACKAGE
 - BeautifulSoup in bs4 
 - time
 - webbrowser
@@ -40,15 +40,11 @@ python3 find.py
 '''
 
 #### STEP 3: Choose the city:
-- `First Question`:
-    '''
-    Enter 1 to see the information of large cities or 2 directly search the city:
-    '''
+- 'First Question':
+    'Enter 1 to see the information of large cities or 2 directly search the city:'
     - If choose 1
-        - `Second Question`: 
-        '''
-        Please choose the number of cities you want to see:
-        '''
+        - 'Second Question': 
+        'Please choose the number of cities you want to see:'
         - `Third Question`: 
         '''
         Please choose the city you want to see (input number):
