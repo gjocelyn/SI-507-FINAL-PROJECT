@@ -41,36 +41,50 @@ python3 find.py
 
 #### STEP 3: Choose the city:
 - `First Question`:
-    `Enter 1 to see the information of large cities or 2 directly search the city:`
+    ```
+    Enter 1 to see the information of large cities or 2 directly search the city:
+    ```
     - If choose 1
         - `Second Question`: 
-        `Please choose the number of cities you want to see:`
+        ```
+        Please choose the number of cities you want to see:
+        ```
         - `Third Question`: 
-        '''
+        ```
         Please choose the city you want to see (input number):
-        '''
+        ```
     - If choose 2
         - `Fourth Question`: 
-        '''
+        ```
         Enter the name of the city:
-        '''
+        ``
  From now, we got the city that you choose to find the restaurant!
  
  #### STEP 4: locate of restaurants on map
- - `fifth Question`: 
-    '''
-    '''Do you want to see the map of this city and the locations of resturants(y or n)? (input Yes, YES, y, Y, YEs, etc. all is okay)
-                - If yes, a map figure will pop up, with the marker which contains the information of restaurants distributed in in the map.
-                - If no, move to the Fifth Question.
-            - `Fifth Question`: Do you want search the resturants through Price and Rate?(y or n)
-                - If yes, move to the next question:
-                    - `Sixth Question`: Which price level do you wnat to see? ($, $$, $$$, $$$$ or No price) (Input one of string)
-                    - `Seventh Question`: Which rate level do you want to see? ('above 4', 'above 3', 'above 2', 'below 2') (Input one of string)
-                    - Generate a list contains the information of restaurants under the limitation of sixth and seventh questions.
-                        - `Eighth Question`:please input a num of resturant which you want to see the website:(Input the restaurant number, the program will show corresponding website) (If yhe list of restaurant is empty, this question will not pop up)
-                - If No, move to the First Question.
+```
+Do you want to see the locations of resturants on the map(y or n)?
+```
+- If yes, a map figure will pop up, with the marker which contains the information of restaurants distributed in in the map.
 
-    - If exit: exit the program.
+- If no, move to the next question.
+            
+ #### STEP 5: search by properties            
+'''
+Do you want search the resturants based PRICE and RATE(y or n)?
+'''
+- If yes, move to the next question:
+  - ```
+   Which price level do you wnat to see? ($, $$, $$$, $$$$ or No price) 
+   Enter rate level( 1.above 4, 2.above 3, 3.above 2, 4.under 2):
+   ```
+      - Generate a list contains the information of restaurants under the limitation of sixth and seventh questions.
+      '''
+      Enter the serial number of resturant to go to the yelp website:
+      '''
+  
+- If No, move to the First Question.
+
+- If exit: exit the program.
     
  ## Demo
 https://drive.google.com/file/d/1m6aLTi6g2vnzpMVkZ-75PHfAmXbXKEUn/view
