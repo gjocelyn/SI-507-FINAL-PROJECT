@@ -85,11 +85,11 @@ def main():
                             else:
                                 print("Please try again")
                         while True:
-                            choice_2 = input("Do you want search the resturants based on PRICE and  RATE?(y or n)")
+                            choice_2 = input("Do you want search the resturants based on PRICE and  RATE(y or n)?")
                             if choice_2.lower() == 'yes' or choice_2.lower() == 'y':
                                 rest_chosen = []
                                 tree_final = tree.rate_tree(tree.price_tree(tree_information))
-                                choice_3 = input("Which price level do you wnat to see? ($, $$, $$$, $$$$ or No price)")
+                                choice_3 = input("Which price level do you wnat to see($, $$, $$$, $$$$ or No price)?")
                                 if choice_3 == '$':
                                     choice_4 = input("Enter rate level( 1.above 4, 2.above 3, 3.above 2, 4.under 2):")
                                     if choice_4 == 'above 4' or '1' or '1.above 4':
@@ -165,7 +165,7 @@ def main():
                                 for i in range(len(rest_chosen)):
                                     print(f"{i+1}. {rest_chosen[i]['name']}: {rest_chosen[i]['attributes']['category']} - rate:{rest_chosen[i]['attributes']['rating']} - phone:{rest_chosen[i]['attributes']['phone']}")
                                 if(len(rest_chosen) > 0):
-                                    choice_5 = int(input('Enter the serial number of resturant to go to the yelp website')-1)
+                                    choice_5 = int(input('Enter the serial number of resturant to go to the yelp website:'))-1
                                     openweb(rest_chosen[choice_5]['attributes']['url'])
                                 else:
                                     print('There is no resualt')
@@ -176,7 +176,7 @@ def main():
                     else:
                         print("Invalid, please try again")
         elif int(input_1) == 2:
-            location = input("Enter the name of the city:") # NYU
+            location = input("Enter the name of the city:")
             url = YELP_URL + location
             param = {
                         'location': location,
@@ -196,7 +196,7 @@ def main():
                     print("Please enter y or n")
 
             while True:
-                choice_2 = input("2 Do you want search the resturants based PRICE and RATE?(y or n)")
+                choice_2 = input("Do you want search the resturants based PRICE and RATE(y or n)?")
                 if choice_2.lower() == 'yes' or choice_2.lower() == 'y':
                     rest_chosen = []
                     tree_final = tree.rate_tree(tree.price_tree(tree_information))
@@ -276,7 +276,7 @@ def main():
                     for i in range(len(rest_chosen)):
                         print(f"{i+1}. {rest_chosen[i]['name']} - {rest_chosen[i]['attributes']['category']} - rate:{rest_chosen[i]['attributes']['rating']} - price:{rest_chosen[i]['attributes']['price']}")
                     if(len(rest_chosen) > 0):
-                        choice_5 = int(input('Enter the serial number of resturant to go to the yelp website')-1)
+                        choice_5 = int(input('Enter the serial number of resturant to go to the yelp website: '))-1
                         openweb(rest_chosen[choice_5]['attributes']['url'])
                     else:
                         print('There is no resualt')

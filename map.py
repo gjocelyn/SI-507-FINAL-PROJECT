@@ -32,12 +32,12 @@ def city_map(tree):
     layout = dict(autosize=True, hovermode='closest',
         mapbox=locate.layout.Mapbox(accesstoken=access_tokens, bearing=0, center=locate.layout.mapbox.Center(lat=(sum(lat_list) / len(lat_list)), lon=(sum(lon_list) / len(lon_list))), pitch=0, zoom=11),
         paper_bgcolor="white", width=1500, height=800)
-    
+
     # Update the layout of the map
     map.update_layout(layout)
-    
+
     # Write the map to an HTML file and open it in a web browser
     map.write_html("map.html", auto_open=True)
-    
+
     # Return the map object
     return map
