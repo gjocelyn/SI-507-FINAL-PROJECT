@@ -12,11 +12,11 @@ This project is a restaurant search program that help people find the desired re
 - plotly
 
 ## DATA SOURCE
-- Yelp Fusion API: 'https://api.yelp.com/v3/businesses/search?'
+- Yelp Fusion API: `https://api.yelp.com/v3/businesses/search?`
 Using API to get access to this website, it gives restaurants data including the name, location, rate, categories, price, phone numberand etc.,then save into json file
-- Mapbox TOKEN: 'https://www.mapbox.com/'
+- Mapbox TOKEN: `https://www.mapbox.com/`
 Using API to get access to this website, using the latitude and longitude information from wikipedia and yelp to locate restaurants in different cities.
-- Wikipedia: 'https://en.wikipedia.org/wiki/List_of_United_States_cities_by_population'
+- Wikipedia: `https://en.wikipedia.org/wiki/List_of_United_States_cities_by_population`
 From this website,data such as the state, population and areas about the city has been scrapped.
 
 
@@ -27,24 +27,24 @@ In order to populate the tree for this project with the latest information about
 ## INTERACTION AND PRESENTATION
 
 #### STEP 1: Install all the required python packages:
-'''
+```
 pip install bs4 # BeautifulSoup in bs4 
 pip install time # time
 pip install webbrowser # webbrowser
 pip install plotly #plotly
-'''
+```
 
 #### STEP 2: Start running find.py:
-'''
+```
 python3 find.py
-'''
+```
 
 #### STEP 3: Choose the city:
-- 'First Question':
-    'Enter 1 to see the information of large cities or 2 directly search the city:'
+- `First Question`:
+    `Enter 1 to see the information of large cities or 2 directly search the city:`
     - If choose 1
-        - 'Second Question': 
-        'Please choose the number of cities you want to see:'
+        - `Second Question`: 
+        `Please choose the number of cities you want to see:`
         - `Third Question`: 
         '''
         Please choose the city you want to see (input number):
