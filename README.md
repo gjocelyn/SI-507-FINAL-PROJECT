@@ -69,11 +69,11 @@ Do you want to see the locations of resturants on the map(y or n)?
 - If no, move to the next question.
             
  #### STEP 5: search by properties            
-'''
-Do you want search the resturants based PRICE and RATE(y or n)?
-'''
+ '''
+ Do you want search the resturants based PRICE and RATE(y or n)?
+ '''
 - If yes, move to the next question:
-  - ```
+  ```
    Which price level do you wnat to see? ($, $$, $$$, $$$$ or No price) 
    Enter rate level( 1.above 4, 2.above 3, 3.above 2, 4.under 2):
    ```
