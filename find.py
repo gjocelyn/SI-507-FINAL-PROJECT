@@ -56,128 +56,127 @@ def main():
     print('\nHi! Welcome to the fun resturant search engine!')
     while True:
         print("\nEnter 1 to see the information of large cities or 2 directly search the city")
-        input_1 = input("Please enter the number or exit: ")
+        input_1 = input("Enter the number or exit: ")
         if input_1.lower() == 'exit':
             exit()
         elif int(input_1) == 1:
-            number = int(input("Enter the amount of cities you want to see:"))
-            city_list = wiki.city(number)
-            for city in city_list:
-                print(f"({city['rank']}) name: {city['name']}, state: {city['state']}, population: {city['population']}")
-            number_input_2 = int(input("Please choose the city you want to see (input number):"))
-            if (1 <= number_input_2 and number_input_2 <= number):
-                location = city_list[number_input_2-1]["name"]
-                url = YELP_URL + location
-                param = {
-                    'location': location,
-                    'term': "food",
-                    'limit': 50
-                }
-                data = check_data(url, param)
-                tree_information = tree.tree(data)
-                while True:
-                    choice_1 = input("Do you want to see the locations of resturants on the map(y or n)?")
-                    if choice_1.lower() == 'yes' or choice_1.lower() == 'y':
-                        fig = map.city_map(tree_information)
-                        break
-                    elif choice_1.lower() == 'no' or choice_1.lower() == 'n':
-                        break
+                    number_input = int(input("Please choose the number of cities you want to see:"))
+                    city_list = wiki.city(number_input)
+                    for city in city_list:
+                        print(f"[{city['rank']}] name: {city['name']}, state: {city['state']}, population: {city['population']}, area: {city['area']}")
+                    number_input_2 = int(input("Please choose the city you want to see (input number):"))
+                    if (1 <= number_input_2 and number_input_2 <= number_input):
+                        location = city_list[number_input_2-1]["name"]
+                        url = YELP_URL + location
+                        param = {
+                            'location': location,
+                            'term': "food",
+                            'limit': 50
+                        }
+                        data = check_data(url, param)
+                        tree_information = tree.tree(data)
+                        while True:
+                            choice_1 = input("Do you want to see the map of this city and the locations of resturants(y or n)?")
+                            if choice_1.lower() == 'yes' or choice_1.lower() == 'y':
+                                fig = map.city_map(tree_information)
+                                break
+                            elif choice_1.lower() == 'no' or choice_1.lower() == 'n':
+                                break
+                            else:
+                                print("Please try again")
+                        while True:
+                            choice_2 = input("Do you want search the resturants based on PRICE and  RATE?(y or n)")
+                            if choice_2.lower() == 'yes' or choice_2.lower() == 'y':
+                                rest_chosen = []
+                                tree_final = tree.rate_tree(tree.price_tree(tree_information))
+                                choice_3 = input("Which price level do you wnat to see? ($, $$, $$$, $$$$ or No price)")
+                                if choice_3 == '$':
+                                    choice_4 = input("Enter rate level( 1.above 4, 2.above 3, 3.above 2, 4.under 2):")
+                                    if choice_4 == 'above 4' or '1' or '1.above 4':
+                                        for i in tree_final['$']['above 4']:
+                                           rest_chosen.append(i)
+                                    elif choice_4 == '2.above 3' or '2' or 'above 3':
+                                        for i in tree_final['$']['above 3']:
+                                            rest_chosen.append(i)
+                                    elif choice_4 == 'above 2' or '3' or '3.above 2':
+                                        for i in tree_final['$']['above 2']:
+                                            rest_chosen.append(i)
+                                    else:
+                                        for i in tree_final['$']['under 2']:
+                                            rest_chosen.append(i)
+                                elif choice_3 == '$$':
+                                    choice_4 = input("Enter rate level( 1.above 4, 2.above 3, 3.above 2, 4.under 2):")
+                                    if choice_4 == 'above 4' or '1' or '1.above 4':
+                                        for i in tree_final['$$']['above 4']:
+                                            rest_chosen.append(i)
+                                    elif choice_4 == '2.above 3' or '2' or 'above 3':
+                                        for i in tree_final['$$']['above 3']:
+                                            rest_chosen.append(i)
+                                    elif choice_4 == 'above 2' or '3' or '3.above 2':
+                                        for i in tree_final['$$']['above 2']:
+                                            rest_chosen.append(i)
+                                    else:
+                                        for i in tree_final['$$']['below 2']:
+                                            rest_chosen.append(i)
+                                elif choice_3 == '$$$':
+                                    choice_4 = input("Enter rate level( 1.above 4, 2.above 3, 3.above 2, 4.under 2):")
+                                    if choice_4 == 'above 4' or '1' or '1.above 4':
+                                        for i in tree_final['$$$']['above 4']:
+                                           rest_chosen.append(i)
+                                    elif choice_4 == '2.above 3' or '2' or 'above 3':
+                                        for i in tree_final['$$$']['above 3']:
+                                          rest_chosen.append(i)
+                                    elif choice_4 == 'above 2' or '3' or '3.above 2':
+                                        for i in tree_final['$$$']['above 2']:
+                                           rest_chosen.append(i)
+                                    else:
+                                        for i in tree_final['$$$']['under 2']:
+                                            rest_chosen.append(i)
+                                elif choice_3 == '$$$$':
+                                    choice_4 = input("Enter rate level( 1.above 4, 2.above 3, 3.above 2, 4.under 2):")
+                                    if choice_4 == 'above 4' or '1' or '1.above 4':
+                                        for i in tree_final['$$$$']['above 4']:
+                                            rest_chosen.append(i)
+                                    elif choice_4 == '2.above 3' or '2' or 'above 3':
+                                        for i in tree_final['$$$$']['above 3']:
+                                            rest_chosen.append(i)
+                                    elif choice_4 == 'above 2' or '3' or '3.above 2':
+                                        for i in tree_final['$$$$']['above 2']:
+                                            rest_chosen.append(i)
+                                    else:
+                                        for i in tree_final['$$$$']['under 2']:
+                                            rest_chosen.append(i)
+                                elif choice_3.lower() == 'no price':
+                                    choice_4 = input("Enter rate level( 1.above 4, 2.above 3, 3.above 2, 4.under 2):")
+                                    if choice_4 == 'above 4' or '1' or '1.above 4':
+                                        for i in tree_final['no price']['above 4']:
+                                            rest_chosen.append(i)
+                                    elif choice_4 == '2.above 3' or '2' or 'above 3':
+                                        for i in tree_final['no price']['above 3']:
+                                            rest_chosen.append(i)
+                                    elif choice_4 == 'above 2' or '3' or '3.above 2':
+                                        for i in tree_final['no price']['above 2']:
+                                            rest_chosen.append(i)
+                                    else:
+                                        for i in tree_final['no price']['under 2']:
+                                            rest_chosen.append(i)
+                                else:
+                                    print('invalid, try again')
+                                for i in range(len(rest_chosen)):
+                                    print(f"{i+1}. {rest_chosen[i]['name']}: {rest_chosen[i]['attributes']['category']} - rate:{rest_chosen[i]['attributes']['rating']} - phone:{rest_chosen[i]['attributes']['phone']}")
+                                if(len(rest_chosen) > 0):
+                                    choice_5 = int(input('Enter the serial number of resturant to go to the yelp website')-1)
+                                    openweb(rest_chosen[choice_5]['attributes']['url'])
+                                else:
+                                    print('There is no resualt')
+                            elif choice_2.lower() == 'no' or choice_2.lower() == 'n':
+                                break
+                            else:
+                                print("Please try again")
                     else:
-                        print("Please try again")
-
-                while True:
-                    choice_2 = input("Do you want search the resturants through Price and Rate?(y or n)")
-                    if choice_2.lower() == 'yes' or choice_2.lower() == 'y':
-                        rest_chosen = []
-                        tree_final = tree.rate_tree(tree.price_tree(tree_information))
-                        choice_3 = input("Which price level do you wnat to see? ($, $$, $$$, $$$$ or No price)")
-                        if choice_3 == '$':
-                            choice_4 = input("Which rate level do you want to see? ('above 4', 'above 3', 'above 2', 'below 2')")
-                            if choice_4 == 'above 4':
-                                for i in tree_final['$']['above 4']: #list
-                                    rest_chosen.append(i)
-                            elif choice_4 == 'above 3':
-                                for i in tree_final['$']['above 3']: #list
-                                    rest_chosen.append(i)
-                            elif choice_4 == 'above 2':
-                                for i in tree_final['$']['above 2']: #list
-                                    rest_chosen.append(i)
-                            else:
-                                for i in tree_final['$']['below 2']: #list
-                                    rest_chosen.append(i)
-                        elif choice_3 == '$$':
-                            choice_4 = input("Which rate level do you want to see? ('above 4', 'above 3', 'above 2', 'below 2')")
-                            if choice_4 == 'above 4':
-                                for i in tree_final['$$']['above 4']: #list
-                                    rest_chosen.append(i)
-                            elif choice_4 == 'above 3':
-                                for i in tree_final['$$']['above 3']: #list
-                                    rest_chosen.append(i)
-                            elif choice_4 == 'above 2':
-                                for i in tree_final['$$']['above 2']: #list
-                                    rest_chosen.append(i)
-                            else:
-                                for i in tree_final['$$']['below 2']: #list
-                                    rest_chosen.append(i)
-                        elif choice_3 == '$$$':
-                            choice_4 = input("Which rate level do you want to see? ('above 4', 'above 3', 'above 2', 'below 2')")
-                            if choice_4 == 'above 4':
-                                for i in tree_final['$$$']['above 4']: #list
-                                    rest_chosen.append(i)
-                            elif choice_4 == 'above 3':
-                                for i in tree_final['$$$']['above 3']: #list
-                                    rest_chosen.append(i)
-                            elif choice_4 == 'above 2':
-                                for i in tree_final['$$$']['above 2']: #list
-                                    rest_chosen.append(i)
-                            else:
-                                for i in tree_final['$$$']['below 2']: #list
-                                    rest_chosen.append(i)
-                        elif choice_3 == '$$$$':
-                            choice_4 = input("Which rate level do you want to see? ('above 4', 'above 3', 'above 2', 'below 2')")
-                            if choice_4 == 'above 4':
-                                for i in tree_final['$$$$']['above 4']: #list
-                                    rest_chosen.append(i)
-                            elif choice_4 == 'above 3':
-                                for i in tree_final['$$$$']['above 3']: #list
-                                    rest_chosen.append(i)
-                            elif choice_4 == 'above 2':
-                                for i in tree_final['$$$$']['above 2']: #list
-                                    rest_chosen.append(i)
-                            else:
-                                for i in tree_final['$$$$']['below 2']: #list
-                                    rest_chosen.append(i)
-                        elif choice_3.lower() == 'no price':
-                            choice_4 = input("Which rate level do you want to see? ('above 4', 'above 3', 'above 2', 'below 2')")
-                            if choice_4 == 'above 4':
-                                for i in tree_final['No price']['above 4']: #list
-                                    rest_chosen.append(i)
-                            elif choice_4 == 'above 3':
-                                for i in tree_final['No price']['above 3']: #list
-                                    rest_chosen.append(i)
-                            elif choice_4 == 'above 2':
-                                for i in tree_final['No price']['above 2']: #list
-                                    rest_chosen.append(i)
-                            else:
-                                for i in tree_final['No price']['below 2']: #list
-                                    rest_chosen.append(i)
-                        else:
-                            print('invalid, try again')
-                        for i in range(len(rest_chosen)):
-                            print(f"{i}. {rest_chosen[i]['name']} - {rest_chosen[i]['attributes']['category']} - rate:{rest_chosen[i]['attributes']['rating']} - price:{rest_chosen[i]['attributes']['price']}")
-                        if(len(rest_chosen) > 0):
-                            choice_5 = int(input('please input a num of resturant which you want to see the website:'))
-                            openweb(rest_chosen[choice_5]['attributes']['url'])
-                        else:
-                            print('There is no resualt')
-                    elif choice_2.lower() == 'no' or choice_2.lower() == 'n':
-                        break
-                    else:
-                        print("Please try again")
-            else:
-                print("Invalid, please try again")
+                        print("Invalid, please try again")
         elif int(input_1) == 2:
-            location = input("Please enter the city you want to check:") # NYU
+            location = input("Enter the name of the city:") # NYU
             url = YELP_URL + location
             param = {
                         'location': location,
@@ -187,98 +186,97 @@ def main():
             data = check_data(url, param)
             tree_information = tree.tree(data)
             while True:
-                choice_1 = input("Do you want to see the map of this city and the locations of resturants(y or n)?")
+                choice_1 = input("Do you want to see the locations of resturants on the map(y or n)?")
                 if choice_1.lower() == 'yes' or choice_1.lower() == 'y':
                     fig = map.city_map(tree_information)
                     break
                 elif choice_1.lower() == 'no' or choice_1.lower() == 'n':
                     break
                 else:
-                    print("Please try again")
+                    print("Please enter y or n")
 
             while True:
-                choice_2 = input("Do you want search the resturants through Price and Rate?(y or n)")
+                choice_2 = input("2 Do you want search the resturants based PRICE and RATE?(y or n)")
                 if choice_2.lower() == 'yes' or choice_2.lower() == 'y':
                     rest_chosen = []
                     tree_final = tree.rate_tree(tree.price_tree(tree_information))
-                    # print("/////////////////////////")
                     choice_3 = input("Which price level do you wnat to see? ($, $$, $$$, $$$$ or No price)")
                     if choice_3 == '$':
-                        choice_4 = input("Which rate level do you want to see? ('above 4', 'above 3', 'above 2', 'below 2')")
-                        if choice_4 == 'above 4':
-                            for i in tree_final['$']['above 4']: #list
+                        choice_4 = input("Enter rate level( 1.above 4, 2.above 3, 3.above 2, 4.under 2):")
+                        if choice_4 == 'above 4' or '1' or '1.above 4':
+                            for i in tree_final['$']['above 4']:
                                 rest_chosen.append(i)
-                        elif choice_4 == 'above 3':
-                            for i in tree_final['$']['above 3']: #list
+                        elif choice_4 == '2.above 3' or '2' or 'above 3':
+                            for i in tree_final['$']['above 3']:
                                 rest_chosen.append(i)
-                        elif choice_4 == 'above 2':
-                            for i in tree_final['$']['above 2']: #list
+                        elif choice_4 == 'above 2' or '3' or '3.above 2':
+                            for i in tree_final['$']['above 2']:
                                 rest_chosen.append(i)
                         else:
-                            for i in tree_final['$']['below 2']: #list
+                            for i in tree_final['$']['under 2']:
                                 rest_chosen.append(i)
                     elif choice_3 == '$$':
-                        choice_4 = input("Which rate level do you want to see? ('above 4', 'above 3', 'above 2', 'below 2')")
-                        if choice_4 == 'above 4':
-                            for i in tree_final['$$']['above 4']: #list
+                        choice_4 = input("Enter rate level( 1.above 4, 2.above 3, 3.above 2, 4.under 2):")
+                        if choice_4 == 'above 4' or '1' or '1.above 4':
+                            for i in tree_final['$$']['above 4']:
                                 rest_chosen.append(i)
-                        elif choice_4 == 'above 3':
-                            for i in tree_final['$$']['above 3']: #list
+                        elif choice_4 == '2.above 3' or '2' or 'above 3':
+                            for i in tree_final['$$']['above 3']:
                                 rest_chosen.append(i)
-                        elif choice_4 == 'above 2':
-                            for i in tree_final['$$']['above 2']: #list
+                        elif choice_4 == 'above 2' or '3' or '3.above 2':
+                            for i in tree_final['$$']['above 2']:
                                 rest_chosen.append(i)
                         else:
-                            for i in tree_final['$$']['below 2']: #list
+                            for i in tree_final['$$']['below 2']:
                                 rest_chosen.append(i)
                     elif choice_3 == '$$$':
-                        choice_4 = input("Which rate level do you want to see? ('above 4', 'above 3', 'above 2', 'below 2')")
-                        if choice_4 == 'above 4':
-                            for i in tree_final['$$$']['above 4']: #list
+                        choice_4 = input("Enter rate level( 1.above 4, 2.above 3, 3.above 2, 4.under 2):")
+                        if choice_4 == 'above 4' or '1' or '1.above 4':
+                            for i in tree_final['$$$']['above 4']:
                                 rest_chosen.append(i)
-                        elif choice_4 == 'above 3':
-                            for i in tree_final['$$$']['above 3']: #list
+                        elif choice_4 == '2.above 3' or '2' or 'above 3':
+                            for i in tree_final['$$$']['above 3']:
                                 rest_chosen.append(i)
-                        elif choice_4 == 'above 2':
-                            for i in tree_final['$$$']['above 2']: #list
+                        elif choice_4 == 'above 2' or '3' or '3.above 2':
+                            for i in tree_final['$$$']['above 2']:
                                 rest_chosen.append(i)
                         else:
-                            for i in tree_final['$$$']['below 2']: #list
+                            for i in tree_final['$$$']['under 2']:
                                 rest_chosen.append(i)
                     elif choice_3 == '$$$$':
-                        choice_4 = input("Which rate level do you want to see? ('above 4', 'above 3', 'above 2', 'below 2')")
-                        if choice_4 == 'above 4':
-                            for i in tree_final['$$$$']['above 4']: #list
+                        choice_4 = input("Enter rate level( 1.above 4, 2.above 3, 3.above 2, 4.under 2):")
+                        if choice_4 == 'above 4' or '1' or '1.above 4':
+                            for i in tree_final['$$$$']['above 4']:
                                 rest_chosen.append(i)
-                        elif choice_4 == 'above 3':
-                            for i in tree_final['$$$$']['above 3']: #list
+                        elif choice_4 == '2.above 3' or '2' or 'above 3':
+                            for i in tree_final['$$$$']['above 3']:
                                 rest_chosen.append(i)
-                        elif choice_4 == 'above 2':
-                            for i in tree_final['$$$$']['above 2']: #list
+                        elif choice_4 == 'above 2' or '3' or '3.above 2':
+                            for i in tree_final['$$$$']['above 2']:
                                 rest_chosen.append(i)
                         else:
-                            for i in tree_final['$$$$']['below 2']: #list
+                            for i in tree_final['$$$$']['under 2']:
                                 rest_chosen.append(i)
                     elif choice_3.lower() == 'no price':
-                        choice_4 = input("Which rate level do you want to see? ('above 4', 'above 3', 'above 2', 'below 2')")
-                        if choice_4 == 'above 4':
-                            for i in tree_final['No price']['above 4']: #list
+                        choice_4 = input("Enter rate level( 1.above 4, 2.above 3, 3.above 2, 4.under 2):")
+                        if choice_4 == 'above 4' or '1' or '1.above 4':
+                            for i in tree_final['no price']['above 4']:
                                 rest_chosen.append(i)
-                        elif choice_4 == 'above 3':
-                            for i in tree_final['No price']['above 3']: #list
+                        elif choice_4 == '2.above 3' or '2' or 'above 3':
+                            for i in tree_final['no price']['above 3']:
                                 rest_chosen.append(i)
-                        elif choice_4 == 'above 2':
-                            for i in tree_final['No price']['above 2']: #list
+                        elif choice_4 == 'above 2' or '3' or '3.above 2':
+                            for i in tree_final['no price']['above 2']:
                                 rest_chosen.append(i)
                         else:
-                            for i in tree_final['No price']['below 2']: #list
+                            for i in tree_final['no price']['under 2']:
                                 rest_chosen.append(i)
                     else:
                         print('invalid, try again')
                     for i in range(len(rest_chosen)):
-                        print(f"{i}. {rest_chosen[i]['name']} - {rest_chosen[i]['attributes']['category']} - rate:{rest_chosen[i]['attributes']['rating']} - price:{rest_chosen[i]['attributes']['price']}")
+                        print(f"{i+1}. {rest_chosen[i]['name']} - {rest_chosen[i]['attributes']['category']} - rate:{rest_chosen[i]['attributes']['rating']} - price:{rest_chosen[i]['attributes']['price']}")
                     if(len(rest_chosen) > 0):
-                        choice_5 = int(input('please input a num of resturant which you want to see the website:'))
+                        choice_5 = int(input('Enter the serial number of resturant to go to the yelp website')-1)
                         openweb(rest_chosen[choice_5]['attributes']['url'])
                     else:
                         print('There is no resualt')
