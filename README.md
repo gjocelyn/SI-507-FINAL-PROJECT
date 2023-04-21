@@ -77,7 +77,9 @@ Do you want to see the locations of resturants on the map(y or n)?
    Which price level do you wnat to see? ($, $$, $$$, $$$$ or No price) 
    Enter rate level( 1.above 4, 2.above 3, 3.above 2, 4.under 2):
    ```
-      - Generate a list contains the information of restaurants under the limitation of sixth and seventh questions.
+
+- Generate a list contains the information of restaurants under the limitation of sixth and seventh questions.
+
       ```
       Enter the serial number of resturant to go to the yelp website:
       ```
