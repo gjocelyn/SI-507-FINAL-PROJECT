@@ -80,9 +80,9 @@ Do you want to see the locations of resturants on the map(y or n)?
 
 - Generate a list contains the information of restaurants under the limitation of sixth and seventh questions.
 
-      ```
+      
       Enter the serial number of resturant to go to the yelp website:
-      ```
+      
   
 - If No, move to the First Question.
 
