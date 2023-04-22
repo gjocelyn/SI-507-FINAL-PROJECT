@@ -83,8 +83,9 @@ Do you want to see the locations of resturants on the map(y or n)?
       
       Enter the serial number of resturant to go to the yelp website:
       
-  
-- If No, move to the First Question.
+    - pop to the yelp page
+
+- If no, move to the First Question.
 
 - If exit: exit the program.
     
