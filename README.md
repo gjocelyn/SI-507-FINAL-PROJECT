@@ -40,24 +40,18 @@ python3 find.py
 ```
 
 #### STEP 3: Choose the city:
-- `First Question`:
+```
+Enter 1 to see the information of large cities or 2 directly search the city:
+```
+- If choose 1
     ```
-    Enter 1 to see the information of large cities or 2 directly search the city:
+    Please choose the number of cities you want to see:
+    Please choose the city you want to see (input number):
     ```
-    - If choose 1
-        - `Second Question`: 
-        ```
-        Please choose the number of cities you want to see:
-        ```
-        - `Third Question`: 
-        ```
-        Please choose the city you want to see (input number):
-        ```
-    - If choose 2
-        - `Fourth Question`: 
-        ```
-        Enter the name of the city:
-        ```
+- If choose 2
+    ```
+    Enter the name of the city:
+    ```
  From now, we got the city that you choose to find the restaurant!
  
  #### STEP 4: locate of restaurants on map
@@ -86,7 +80,7 @@ Do you want to see the locations of resturants on the map(y or n)?
       
     - pop to the yelp page
 
-- If no, move to the First Question.
+- If no, go back to step 3.
 
 - If exit: exit the program.
     
